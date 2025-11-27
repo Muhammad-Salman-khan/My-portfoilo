@@ -1,9 +1,11 @@
-import type { Datatype } from "~/types";
 import type { Route } from "./+types/detail";
+import type { Datatype } from "~/types";
 
 import { Calendar, Tag, Link as LinkIcon, Star, Hash } from "lucide-react";
 
-export async function loader({ params }: Route.LoaderArgs) {
+export const loader = async ({
+  params,
+}: Route.LoaderArgs): Promise<{ Project: Datatype }> => {
   const { id } = params;
   try {
     const req = await fetch(`http://localhost:8000/projects/${id}`);
@@ -13,9 +15,9 @@ export async function loader({ params }: Route.LoaderArgs) {
     console.error(error);
     throw new Error("Failed to load project");
   }
-}
+};
 
-export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
+const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
   const {
     Project: { title, id, image, date, category, featured, url, description },
   } = loaderData;
@@ -93,4 +95,5 @@ export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
       </div>
     </>
   );
-}
+};
+export default ProjectDetails;
