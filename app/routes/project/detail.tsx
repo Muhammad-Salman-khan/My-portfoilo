@@ -25,8 +25,8 @@ const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
 
   return (
     <>
-      <div className="min-h-screen max-w-screen p-3 ">
-        <div className="w-full max-w-4xl mx-auto mt-5 flex  md:flex-row flex-col  rounded-2xl justify-center align-middle items-center shadow-2xl overflow-hidden transform  bg-stone-900 transition-all duration-300 border border-gray-800">
+      <div className="min-h-screen flex justify-center align-middle items-center max-w-screen p-3 ">
+        <div className="w-full   max-w-4xl mx-auto  flex  md:flex-row flex-col  rounded-2xl  shadow-2xl overflow-hidden transform  bg-stone-900 transition-all duration-300 border border-gray-800">
           {/* Image Container */}
           <div className="f h-full w-full group">
             <img
