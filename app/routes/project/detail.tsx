@@ -1,7 +1,16 @@
 import type { Route } from "./+types/detail";
 import type { Datatype } from "~/types";
 
-import { Calendar, Tag, Link as LinkIcon, Star, Hash } from "lucide-react";
+import {
+  Calendar,
+  Tag,
+  Link as LinkIcon,
+  Star,
+  Hash,
+  ArrowBigLeft,
+} from "lucide-react";
+import { use } from "react";
+import { Link } from "react-router";
 
 export const loader = async ({
   params,
@@ -17,7 +26,6 @@ export const loader = async ({
     throw new Error("Failed to load project");
   }
 };
-
 const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
   const {
     Project: { title, id, image, date, category, featured, url, description },
@@ -26,9 +34,9 @@ const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
   return (
     <>
       <div className="min-h-screen flex justify-center align-middle items-center max-w-screen p-3 ">
-        <div className="w-full   max-w-4xl mx-auto  flex  md:flex-row flex-col  rounded-2xl  shadow-2xl overflow-hidden transform  bg-stone-900 transition-all duration-300 border border-gray-800">
+        <div className="w-full  max-w-4xl mx-auto  flex  md:flex-row flex-col  rounded-2xl  shadow-2xl overflow-hidden transform  bg-black transition-all duration-300 border border-gray-400">
           {/* Image Container */}
-          <div className="f h-full w-full group">
+          <div className="h-full border-r-2 w-full group">
             <img
               src={image}
               alt={title}
@@ -77,20 +85,32 @@ const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
             <p className="text-white leading-relaxed mb-8 max-w-sm mx-auto">
               {description}
             </p>
+            <div className="flex justify-center align-middle items-center gap-3 ">
+              <div className=" border-2 relative inline-flex items-center justify-center px-4 py-2 bg-stone-950 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:shadow-lg text-sm hover:shadow-indigo-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                <Link to="/project">
+                  <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-64 group-hover:h-64 opacity-10"></span>
+                  <div className="flex justify-center align-middle items-center gap-2">
+                    <ArrowBigLeft size={25} />
+                    <span className="relative text-sm flex items-center">
+                      Go back
+                    </span>
+                  </div>
+                </Link>
+              </div>
 
-            {/* Action Button */}
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-8 py-3 bg-stone-950 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-            >
-              <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-64 group-hover:h-64 opacity-10"></span>
-              <span className="relative flex items-center">
-                View Project
-                <LinkIcon className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-              </span>
-            </a>
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative border-2 inline-flex items-center justify-center px-4 py-2 text-sm bg-stone-950 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+              >
+                <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-64 group-hover:h-64 opacity-10"></span>
+                <span className="relative flex items-center">
+                  View Project
+                  <LinkIcon className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
