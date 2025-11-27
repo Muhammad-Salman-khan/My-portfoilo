@@ -22,32 +22,23 @@ export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
 
   return (
     <>
-      <div className="min-h-screen max-w-screen p-3">
-        <div className="w-full max-w-lg mx-auto mt-5 bg-stone-900 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 border border-gray-800">
+      <div className="min-h-screen max-w-screen p-3 ">
+        <div className="w-full max-w-4xl mx-auto mt-5 flex  md:flex-row flex-col  rounded-2xl justify-center align-middle items-center shadow-2xl overflow-hidden transform  bg-stone-900 transition-all duration-300 border border-gray-800">
           {/* Image Container */}
-          <div className="relative h-80 w-full group">
+          <div className="f h-full w-full group">
             <img
               src={image}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-700 opacity-90 group-hover:opacity-100"
+              className="w-full maxh-screen object-cover transition-transform duration-700 opacity-90 group-hover:opacity-100"
             />
 
-            {/* Featured Badge */}
-            {featured && (
-              <div className="absolute top-2 right-4 bg-amber-500 text-amber-950 text-xs font-bold px-3 py-1.5 rounded-full flex items-center shadow-lg backdrop-blur-md bg-opacity-90">
-                <Star className="w-3 h-3 mr-1 fill-amber-950" />
-                FEATURED
-              </div>
-            )}
-
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-linear-to-t from-gray-900 via-transparent to-transparent opacity-60 pointer-events-none" />
           </div>
 
           {/* Content Body */}
           <div className="p-8 text-center flex flex-col items-center">
             {/* Category Pill */}
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-500/20 text-indigo-300 text-xs font-medium mb-4 tracking-wide uppercase">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-500/20 text-white text-xs font-medium mb-4 tracking-wide uppercase">
               <Tag className="w-3 h-3 mr-1.5" />
               {category}
             </div>
@@ -58,7 +49,7 @@ export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
             </h2>
 
             {/* Meta Info (Date & ID) */}
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-400 mb-6">
+            <div className="flex items-center justify-center space-x-4 text-sm text-white mb-6">
               <div className="flex items-center">
                 <Calendar className="w-4 h-4 mr-1.5 opacity-75" />
                 <span>
@@ -80,7 +71,7 @@ export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
             </div>
 
             {/* Description */}
-            <p className="text-gray-300 leading-relaxed mb-8 max-w-sm mx-auto">
+            <p className="text-white leading-relaxed mb-8 max-w-sm mx-auto">
               {description}
             </p>
 
@@ -89,7 +80,7 @@ export default function ProjectDetails({ loaderData }: Route.ComponentProps) {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative inline-flex items-center justify-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+              className="group relative inline-flex items-center justify-center px-8 py-3 bg-stone-950 text-white font-semibold rounded-lg overflow-hidden transition-all duration-300 hover:bg-indigo-500 hover:text-white hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
             >
               <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-indigo-600 rounded-full group-hover:w-64 group-hover:h-64 opacity-10"></span>
               <span className="relative flex items-center">
