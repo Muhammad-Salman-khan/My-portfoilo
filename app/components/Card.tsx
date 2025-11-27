@@ -1,6 +1,16 @@
 import { ExternalLink, Calendar, Tag, Star } from "lucide-react";
 import { Link } from "react-router";
 import type { Datatype } from "~/types";
+interface Project {
+  id: string;
+  title: string;
+  image: string;
+  url: string;
+  date: string;
+  description: string;
+  category: string;
+  featured: boolean;
+}
 const Card = ({ project }: { project: Datatype }) => {
   return (
     <>
@@ -46,7 +56,7 @@ const Card = ({ project }: { project: Datatype }) => {
           <div className="grid grid-rows-[0fr] transition-all duration-300 ease-in-out group-hover:grid-rows-[1fr]">
             <div className="overflow-hidden">
               <div className="pt-4 flex items-center gap-2 text-sm font-semibold text-blue-300 group-hover:text-blue-200">
-                <span>View my projects</span>
+                <span>View my </span>
                 <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </div>
               <span>{project.description}</span>
