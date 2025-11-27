@@ -8,8 +8,9 @@ export const loader = async ({
 }: Route.LoaderArgs): Promise<{ Project: Datatype }> => {
   const { id } = params;
   try {
-    const req = await fetch(`http://localhost:8000/projects/${id}`);
-    const data: Datatype = await req.json();
+    const res = await fetch(`http://localhost:8000/projects/${id}`);
+    if (!res.ok) throw new Error(`Project not found `);
+    const data: Datatype = await res.json();
     return { Project: data };
   } catch (error: unknown) {
     console.error(error);
@@ -38,7 +39,7 @@ const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
           </div>
 
           {/* Content Body */}
-          <div className="p-8 text-center flex flex-col items-center">
+          <div className="p-8 text-center  flex flex-col items-center">
             {/* Category Pill */}
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-900/30 border border-indigo-500/20 text-white text-xs font-medium mb-4 tracking-wide uppercase">
               <Tag className="w-3 h-3 mr-1.5" />
