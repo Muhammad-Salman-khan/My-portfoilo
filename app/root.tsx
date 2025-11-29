@@ -10,8 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import Navbar from "./components/Navbar";
-import Lenis from "lenis";
-import { useRef, useEffect } from "react";
+import { ReactLenis } from "lenis/react";
+import { useEffect, useRef } from "react";
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
@@ -31,19 +31,15 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 export function Layout({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
-
+  const lenisRef = useRef<null>(null);
   useEffect(() => {
-    const lenis = new Lenis({
-      autoRaf: true,
-    });
-    lenisRef.current = lenis;
-    const onScroll = (e: unknown): void => {};
-    lenis.on("scroll", onScroll);
-    return () => {
-      lenis.destroy();
-    };
+    function update(time: unknown) {}
+
+    const rafId = requestAnimationFrame(update);
+
+    return () => cancelAnimationFrame(rafId);
   }, []);
+
   return (
     <html lang="en">
       <head>
@@ -53,6 +49,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+        <ReactLenis
+          autoRaf={true}
+          options={{ smoothWheel: true, duration: 1 }}
+        />
         <Navbar />
         <main className="min-h-screen max-w-screen">{children}</main>
         <ScrollRestoration />
