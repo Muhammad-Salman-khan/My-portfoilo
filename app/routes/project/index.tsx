@@ -1,8 +1,9 @@
 import type { Datatype } from "~/types";
 import type { Route } from "./+types/index";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import Card from "~/components/Card";
 import Pagination from "~/components/Pagination";
+import Button from "~/components/Button";
 
 export const loader = async ({
   request,
@@ -17,15 +18,23 @@ export const loader = async ({
   }
 };
 const index = ({ loaderData }: Route.ComponentProps) => {
-  const { projects } = loaderData;
+  const [categories, SelectedCategories] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
-  const ProjectPerPage = 2;
-
-  const totalPage = projects.length / ProjectPerPage;
+  const { projects } = loaderData;
+  const category = [
+    "All",
+    ...new Set(projects.map((projects) => projects.category)),
+  ];
+  const filterdProjects =
+    categories === "All"
+      ? projects
+      : projects.filter((e) => e.category === categories);
+  const ProjectPerPage = 10;
+  const totalPage = filterdProjects.length / ProjectPerPage;
   const lastIndex = currentPage * ProjectPerPage;
   const FirstIndex = (currentPage - 1) * ProjectPerPage;
-  const currentProjects = projects.slice(FirstIndex, lastIndex);
-  console.log(currentPage);
+  const currentProjects = filterdProjects.slice(FirstIndex, lastIndex);
+  const RenderCategories = ["All", "Fullstack", "Frontend"];
   return (
     <>
       <div className="flex justify-center items-center">
@@ -35,11 +44,13 @@ const index = ({ loaderData }: Route.ComponentProps) => {
       </div>
 
       <div className="container mx-auto p-4">
-        <Pagination
-          totalPage={totalPage}
-          currentPage={currentPage}
-          onPageChange={setCurrentPage}
-        />
+        <div className="flex justify-center align-middle items-center gap-2">
+          {RenderCategories.map((e, id) => (
+            <Button key={id} select={() => SelectedCategories(e)}>
+              {e}
+            </Button>
+          ))}
+        </div>
         <div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 xl:gap-12">
           {currentProjects.map((project) => (
             <Card key={project.id} project={project} />
