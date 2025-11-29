@@ -1,6 +1,7 @@
 import { ExternalLink, Calendar, Tag, Star } from "lucide-react";
 import { Link } from "react-router";
 import type { Datatype } from "~/types";
+
 interface Project {
   id: string;
   title: string;
