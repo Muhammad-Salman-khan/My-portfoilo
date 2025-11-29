@@ -4,7 +4,8 @@ import { useState, type ReactNode } from "react";
 import Card from "~/components/Card";
 import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
-
+import { AnimatePresence, motion } from "motion/react";
+import { div } from "motion/react-client";
 export const loader = async ({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Datatype[] }> => {
@@ -51,11 +52,16 @@ const index = ({ loaderData }: Route.ComponentProps) => {
             </Button>
           ))}
         </div>
-        <div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 xl:gap-12">
-          {currentProjects.map((project) => (
-            <Card key={project.id} project={project} />
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            layout
+            className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 xl:gap-12"
+          >
+            {currentProjects.map((project) => (
+              <Card project={project} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </>
   );
