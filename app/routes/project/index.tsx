@@ -4,7 +4,7 @@ import { useState, type ReactNode } from "react";
 import Card from "~/components/Card";
 import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
-import { AnimatePresence, motion } from "motion/react";
+import { LazyMotion, domAnimation, motion, scale } from "motion/react";
 import { div } from "motion/react-client";
 export const loader = async ({
   request,
@@ -52,16 +52,23 @@ const index = ({ loaderData }: Route.ComponentProps) => {
             </Button>
           ))}
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div
-            layout
-            className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 xl:gap-12"
-          >
+        <LazyMotion features={domAnimation}>
+          <motion.div className="grid grid-cols-1 gap-8 mt-8 lg:grid-cols-3 xl:gap-12">
             {currentProjects.map((project) => (
-              <Card project={project} />
+              <motion.div
+                whileHover={{ scale: 0.9, transition: { duration: 1 } }}
+                transition={{ duration: 0.5 }}
+                layout
+                key={project.id}
+                className={`    ${
+                  project.featured ? "md:col-span-2" : "col-span-1"
+                }`}
+              >
+                <Card project={project} />
+              </motion.div>
             ))}
           </motion.div>
-        </AnimatePresence>
+        </LazyMotion>
       </div>
     </>
   );

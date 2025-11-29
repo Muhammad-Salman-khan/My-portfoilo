@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Mail, ArrowRight, Download } from "lucide-react";
 import Pro from "../../public/My_profilepic.jpeg";
+import { motion, scale } from "motion/react";
 const HeroSection = () => {
   return (
     <>
@@ -26,29 +27,64 @@ const HeroSection = () => {
             {/* 2. Text Content */}
             <div className="flex-1 text-center lg:text-left space-y-8">
               {/* Badge / Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-slate-800 text-blue-400 text-sm font-medium mx-auto lg:mx-0">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{
+                  opacity: 1,
+                }}
+                transition={{
+                  opacity: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+                  y: {
+                    duration: 2.4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  },
+                }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-full 
+             bg-slate-900 border border-slate-800 
+             text-blue-400 text-sm font-medium mx-auto lg:mx-0"
+              >
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                 </span>
                 Available for Hire
-              </div>
+              </motion.div>
 
               {/* Headline */}
-              <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight">
-                  Hello, I'm <br />
-                  <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400">
-                    Salman Khan
-                  </span>
-                </h1>
-                <h2 className="text-xl sm:text-2xl text-slate-400 font-medium">
-                  Front-end Developer
-                </h2>
-              </div>
+              <motion.h1
+                variants={{
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+                  },
+                }}
+                className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white tracking-tight leading-tight"
+              >
+                Hello, I'm <br />
+                <motion.span
+                  className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 inline-block"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.6 },
+
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    y: [0, -1, 0],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  Salman Khan
+                </motion.span>
+              </motion.h1>
 
               {/* Description */}
-              <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-white animate-pulse text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 I craft responsive, high-performance web apps with clean
                 architecture and zero compromise. Focused on building scalable
                 solutions that solve real-world problems.
@@ -63,7 +99,6 @@ const HeroSection = () => {
                   View My Work
                   <ArrowRight className="w-5 h-5" />
                 </Link>
-
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 border border-slate-700 hover:border-slate-600 text-white font-medium rounded-xl transition-all duration-300 hover:bg-slate-800"
@@ -73,23 +108,63 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* 3. Hero Image with Glow Effect */}
-            <div className="flex-1 relative flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: [1, 1.02, 1],
+                rotate: [0, 4, -3, 0],
+              }}
+              whileHover={{
+                scale: 1.08,
+                rotate: 2,
+              }}
+              whileTap={{
+                scale: 0.97,
+                rotate: -1,
+              }}
+              transition={{
+                duration: 1.1,
+                ease: "easeOut",
+                rotate: {
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                scale: {
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                },
+                // hover needs spring to feel real
+                type: "spring",
+                stiffness: 220,
+                damping: 18,
+              }}
+              className="flex-1 relative flex justify-center lg:justify-end"
+            >
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
                 {/* Spinning Gradient Ring */}
                 <div className="absolute -inset-1 bg-linear-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-70 animate-pulse"></div>
 
                 {/* Image Container */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl">
+                <motion.div
+                  whileHover={{
+                    y: -8,
+                    boxShadow: "10px 20px 40px rgba(255,255,255,0.15)",
+                  }}
+                  className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl"
+                >
                   <img
                     src={Pro}
                     alt="Muhammed Salman Khan"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-slate-950/50 to-transparent opacity-60"></div>
-                </div>
+                </motion.div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
