@@ -1,10 +1,10 @@
 import type { ReactNode, ReactPortal } from "react";
 
-type d = {
+type buttonProps = {
   select: (e: any | unknown | ReactNode) => void;
   children: ReactNode;
 };
-const Button = ({ select, children }: d) => {
+const Button = ({ select, children }: buttonProps) => {
   return (
     <>
       <button
