@@ -18,8 +18,10 @@ export const loader = async ({
 }: Route.LoaderArgs): Promise<{ Project: Datatype }> => {
   const { id } = params;
   try {
-    const res = await fetch(`http://localhost:8000/projects/${id}`);
-    if (!res.ok) throw new Error(`Project not found `);
+    const url = import.meta.env.VITE_API_URL;
+    console.log("Constructed URL:", url);
+    const res = await fetch(`${url}${id}`);
+    if (!res.ok) throw new Response(await res.text(), { status: res.status });
     const data: Datatype = await res.json();
     return { Project: data };
   } catch (error: unknown) {

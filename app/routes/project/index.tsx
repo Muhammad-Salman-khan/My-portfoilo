@@ -2,20 +2,20 @@ import type { Datatype } from "~/types";
 import type { Route } from "./+types/index";
 import { useState, type ReactNode } from "react";
 import Card from "~/components/Card";
-import Pagination from "~/components/Pagination";
 import Button from "~/components/Button";
 import { LazyMotion, domAnimation, motion, scale } from "motion/react";
-import { div } from "motion/react-client";
 export const loader = async ({
   request,
 }: Route.LoaderArgs): Promise<{ projects: Datatype[] }> => {
   try {
-    const res = await fetch("http://localhost:8000/projects");
+    let url = import.meta.env.VITE_API_KEY;
+    const res = await fetch(`${url}projects`);
+    if (!res.ok) throw new Response(await res.text(), { status: res.status });
     const data = await res.json();
     return { projects: data };
-  } catch (error: unknown) {
+  } catch (error) {
     console.error(error);
-    throw Error();
+    throw error;
   }
 };
 const index = ({ loaderData }: Route.ComponentProps) => {
@@ -36,6 +36,7 @@ const index = ({ loaderData }: Route.ComponentProps) => {
   const FirstIndex = (currentPage - 1) * ProjectPerPage;
   const currentProjects = filterdProjects.slice(FirstIndex, lastIndex);
   const RenderCategories = ["All", "Fullstack", "Frontend"];
+
   return (
     <>
       <div className="flex justify-center items-center">

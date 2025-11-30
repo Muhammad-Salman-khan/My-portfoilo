@@ -88,7 +88,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         className="flex flex-col items-center justify-center min-h-screen max-w-screen px-4 bg-linear-to-r overflow-hidden from-purple-600 via-indigo-600 to-pink-600 dark:from-gray-800 dark:via-gray-900  dark:to-black
                     text-white dark:text-gray-100 relative"
       >
-        <h1 className="text-[6rem] md:text-[12rem] mt-12 font-extrabold  text-purple-100 dark:text-gray-300">
+        <h1 className="text-[6rem] md:text-[12rem] animate-pulse mt-12 font-extrabold  text-purple-100 dark:text-gray-300">
           {message}
         </h1>
         <p className="text-center max-w-md mb-8 text-white font-extrabold dark:text-white">
