@@ -19,7 +19,6 @@ export const loader = async ({
   const { id } = params;
   try {
     const url = import.meta.env.VITE_API_URL;
-    console.log("Constructed URL:", url);
     const res = await fetch(`${url}${id}`);
     if (!res.ok) throw new Response(await res.text(), { status: res.status });
     const data: Datatype = await res.json();
