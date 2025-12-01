@@ -8,7 +8,6 @@ interface Project {
   title: string;
   image: string;
   url: string;
-  date: string;
   description: string;
   category: string;
   featured: boolean;
@@ -43,10 +42,6 @@ const Card = ({ project }: { project: Datatype }) => {
             <span className="inline-flex items-center gap-1 rounded-full bg-blue-600/80 px-2.5 py-1 text-white backdrop-blur-sm">
               <Tag className="h-3 w-3" />
               {project.category}
-            </span>
-            <span className="flex items-center gap-1">
-              <Calendar className="h-3 w-3" />
-              {project.date}
             </span>
           </div>
 

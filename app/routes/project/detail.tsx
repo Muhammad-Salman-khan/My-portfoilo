@@ -30,7 +30,7 @@ export const loader = async ({
 };
 const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
   const {
-    Project: { title, id, image, date, category, featured, url, description },
+    Project: { title, id, image, category, featured, url, description },
   } = loaderData;
 
   return (
@@ -60,16 +60,7 @@ const ProjectDetails = ({ loaderData }: Route.ComponentProps) => {
 
             {/* Meta Info (Date & ID) */}
             <div className="flex items-center justify-center space-x-4 text-sm text-white mb-6">
-              <div className="flex items-center">
-                <Calendar className="w-4 h-4 mr-1.5 opacity-75" />
-                <span>
-                  {new Date(date).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-              </div>
+              <div className="flex items-center"></div>
               <div className="w-1 h-1 bg-gray-700 rounded-full" />
               <div
                 className="flex items-center font-mono text-xs text-gray-500"

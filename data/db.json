@@ -1,74 +1,41 @@
-{  
-"projects": [
-  {
-    "id": 1,
-    "title": "DevDash",
-    "description": "A productivity dashboard for developers to track tasks, goals, and inspiration.",
-    "image": "/images/project-1.png",
-    "url": "https://example.com",
-    "date": "2025-02-01",
-    "category": "Fullstack",
-    "featured": false
-  },
-  {
-    "id": 2,
-    "title": "SnapFeed",
-    "description": "A photo-sharing app with uploads, a feed, and social features.",
-    "image": "/images/project-2.png",
-    "url": "https://example.com",
-    "date": "2025-01-20",
-    "category": "Frontend",
-    "featured": true
-  },
-  {
-    "id": 3,
-    "title": "NoteNest",
-    "description": "A note-taking app with categories and local storage support.",
-    "image": "/images/project-3.png",
-    "url": "https://example.com",
-    "date": "2024-12-15",
-    "category": "Frontend",
-    "featured": true
-  },
-  {
-    "id": 4,
-    "title": "FitTrack",
-    "description": "A fitness tracker that logs workouts and progress visually.",
-    "image": "/images/project-4.png",
-    "url": "https://example.com",
-    "date": "2024-11-05",
-    "category": "Fullstack",
-    "featured": false
-  },
-  {
-    "id": 5,
-    "title": "CodeCritic",
-    "description": "A code snippet review tool with comments and upvotes.",
-    "image": "/images/project-5.png",
-    "url": "https://example.com",
-    "date": "2024-10-12",
-    "category": "Frontend",
-    "featured": false
-  },
-  {
-    "id": 6,
-    "title": "InspoQuote",
-    "description": "A daily inspiration quote generator with save/share options.",
-    "image": "/images/project-6.png",
-    "url": "https://example.com",
-    "date": "2024-09-28",
-    "category": "Fullstack",
-    "featured": false
-  },
-  {
-    "id": 7,
-    "title": "Blogify",
-    "description": "A minimalist blogging platform with Markdown and comments.",
-    "image": "/images/project-7.png",
-    "url": "https://example.com",
-    "date": "2024-09-01",
-    "category": "Fullstack",
-    "featured": false
-  }
-]
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "OLX Buy & Sell",
+      "description": "A responsive OLX-style buy & sell web app built using HTML, TailwindCSS, and Vanilla JavaScript, powered by Firebase Realtime Database for instant data updates and Vercel for blazing-fast hosting.",
+      "image": "/images/project-1.png",
+      "url": "https://olx-buy-and-sell-b5d9.vercel.app/",
+      "date": "2025-02-01",
+      "category": "Fullstack",
+      "featured": false
+    },
+    {
+      "id": 2,
+      "title": "split-the-bill",
+      "description": "A bill spliting web app that let you split the bill between two people and can owe you and you can owe your friend money",
+      "image": "/images/project-2.png",
+      "url": "https://split-the-bill-sand.vercel.app/",
+      "category": "Frontend",
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Notes",
+      "description": "A note-taking app with categories and local storage support.",
+      "image": "/images/project-3.png",
+      "url": "https://notes-eta-indol.vercel.app/",
+      "category": "Frontend",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "Crypto-insight",
+      "description": "A cryto dash which will keep you updated with the market  about coins.",
+      "image": "/images/project-4.png",
+      "url": "https://crypto-insight-swart.vercel.app/",
+      "category": "Frontend",
+      "featured": false
+    }
+  ]
 }

@@ -7,7 +7,7 @@ const about = () => {
     email: "alibinkhan465@gmail.com",
     linkedin: "linkedin.com/in/salman-khan-dev",
     github: "github.com/alibinkhan465",
-    bio: "MERN Stack Developer building production-ready web applications. I architect responsive, high-performance frontends with React.js & TailwindCSS while engineering secure, real-time backends with Firebase & Node.js. My stack: APIs, Auth, Cloud DB → Vercel deployment. Clean code, optimized UX, and CI/CD are my standards. Shipping solutions at speed.",
+    bio: "MERN Stack Developer building production-ready web applications. I architect responsive, high-performance frontends with React.js & TailwindCSS while engineering secure, real-time backends with Firebase & Node.js.",
   };
 
   const skills = [
