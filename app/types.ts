@@ -8,3 +8,11 @@ export type Datatype = {
   category: string;
   featured: boolean;
 };
+
+export type Post = {
+  id: string;
+  title: string;
+  excerpt: string;
+  slug: string;
+  date: string;
+};
