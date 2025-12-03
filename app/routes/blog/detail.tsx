@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import type { Post } from "~/types";
 import type { Route } from "./+types/detail";
+import { Link } from "react-router";
 export const loader = async ({ request, params }: Route.LoaderArgs) => {
   try {
     const { slug } = params;
@@ -53,6 +54,14 @@ const detail = ({ loaderData }: Route.ComponentProps) => {
             </div>
           </article>
         </main>
+        <div className="p-6 pt-0">
+          <Link
+            to={`/blog`}
+            className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          >
+            Back to Blogs
+          </Link>
+        </div>
       </div>
     </>
   );
