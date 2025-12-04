@@ -29,7 +29,8 @@ const index = ({ loaderData }: Route.ComponentProps) => {
     const query = search.toLowerCase();
     return (
       post.title.toLowerCase().includes(query) ||
-      post.excerpt.toLowerCase().includes(query)
+      post.excerpt.toLowerCase().includes(query) ||
+      post.slug.toLowerCase().includes(query)
     );
   });
 
