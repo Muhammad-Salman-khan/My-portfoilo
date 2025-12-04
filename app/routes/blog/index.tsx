@@ -42,7 +42,7 @@ const index = ({ loaderData }: Route.ComponentProps) => {
         </h2>
         <Search seachQuery={search} onSearchChange={(e) => setSearched(e)} />
         {search.length > 0
-          ? FilterdPost.map((post: any) => (
+          ? FilterdPost.map((post: Post) => (
               <BlogCard key={post.id} post={post} />
             ))
           : posts.map((post) => <BlogCard key={post.id} post={post} />)}
