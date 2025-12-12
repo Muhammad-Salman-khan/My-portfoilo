@@ -3,20 +3,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { Link } from "react-router";
 import type { Datatype } from "~/types";
 
-interface Project {
-  id: string;
-  title: string;
-  image: string;
-  url: string;
-  description: string;
-  category: string;
-  featured: boolean;
-}
 const Card = ({ project }: { project: Datatype }) => {
   return (
     <>
       <Link
-        to={`/project/${project.id}`}
+        to={`/project/${project.documentId}`}
         key={project.id}
         rel="noopener noreferrer"
         className={`group relative flex flex-col h-60 justify-end overflow-hidden rounded-md bg-gray-100 dark:bg-gray-900 shadow-xl transition-all hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-500/50`}
@@ -26,10 +17,9 @@ const Card = ({ project }: { project: Datatype }) => {
           style={{ backgroundImage: `url(${project.image})` }}
         />
 
-        {/* Adjusted gradient to cover more height since the card is taller now */}
         <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-90" />
 
-        {project.featured && (
+        {project.feature && (
           <div className="absolute top-4 right-4 z-20">
             <span className="inline-flex items-center gap-1 rounded-full bg-yellow-400/90 px-3 py-1 text-xs font-bold text-black backdrop-blur-md shadow-lg">
               <Star className="h-3 w-3 fill-current" /> Featured

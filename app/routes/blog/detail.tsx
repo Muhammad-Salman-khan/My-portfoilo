@@ -1,67 +1,90 @@
 import ReactMarkdown from "react-markdown";
-import type { Post } from "~/types";
+import type { Post, StrapiPostDetail } from "~/types";
 import type { Route } from "./+types/detail";
 import { Link } from "react-router";
 export const loader = async ({ request, params }: Route.LoaderArgs) => {
-  try {
-    const { slug } = params;
-    const url = new URL(`/posts-meta.json`, request.url);
-    const res = await fetch(url.href);
-    if (!res.ok) throw new Error("Failed to find the post");
-    const data = await res.json();
-    const post = data.find((post: Post) => post.slug === slug);
-    if (!post) throw new Error("404 Post not found");
-    const markdown = await import(`../../posts/${slug}.md?raw`);
-    return {
-      post,
-      markdown: markdown.default,
-    };
-  } catch (error: any) {
-    console.error(error);
-    throw new Error(error);
-  }
+  const { document } = params;
+  const res = await fetch(
+    `${import.meta.env.VITE_API_KEY}posts/${document}?populate=*`
+  );
+  const json = await res.json();
+  const item = json.data;
+  const post: StrapiPostDetail = {
+    ...item,
+    image: item.image?.url ? `${item.image?.url}` : "/images/no-image.png",
+  };
+  console.log(item);
+
+  return { post };
 };
-const detail = ({ loaderData }: Route.ComponentProps) => {
-  const { post, markdown } = loaderData;
-  // BlogArticle.tsx
+type BlogPost = {
+  loaderData: {
+    post: Post;
+  };
+};
+const detail = ({ loaderData }: BlogPost) => {
+  const { post } = loaderData;
   return (
     <>
-      <div className="min-h-screen bg-zinc-950 px-4 sm:px-6 lg:px-8">
-        {/* Header / Title */}
-        <header className="pt-10 pb-8">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-100 leading-tight">
+      <div className="min-h-screen bg-zinc-950 text-gray-200">
+        <div className="mx-auto max-w-3xl px-4 pt-10 pb-16 sm:px-6 sm:pt-14 lg:px-8">
+          {/* Header Section */}
+          <header className="mb-8 sm:mb-10">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-tight">
               {post.title}
             </h1>
-
-            {/* Optional meta line – keep or delete */}
-            <p className="mt-3 text-sm text-gray-400">
-              {new Date(post.date || Date.now()).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+            <p className="mt-4 text-base text-gray-400 sm:text-lg">
+              <time dateTime={post.date}></time>
             </p>
-          </div>
-        </header>
+          </header>
 
-        {/* Article body */}
-        <main className="px-4 pb-16 sm:pb-20 md:pb-24">
-          <article className="mx-auto w-full max-w-3xl text-gray-200">
-            {/* prose-neutral keeps Tailwind’s default colours; we override text colour below */}
-            <div className="prose prose-sm sm:prose-base md:prose-lg prose-neutral prose-invert text-white">
-              <ReactMarkdown>{markdown}</ReactMarkdown>
+          {/* Featured Image */}
+          {post.image && (
+            <div className="mb-10 w-full overflow-hidden rounded-xl shadow-xl shadow-zinc-900/50">
+              <img
+                className="w-full h-auto object-cover transform transition-transform hover:scale-[1.01] duration-500"
+                src={post.image}
+                alt={post.title || "Blog cover"}
+              />
             </div>
+          )}
+
+          <article
+            className="prose prose-zinc prose-invert prose-sm sm:prose-base md:prose-lg max-w-none 
+          prose-headings:font-bold prose-headings:tracking-tight prose-a:text-blue-400 hover:prose-a:text-blue-300
+          prose-img:rounded-lg prose-img:shadow-lg"
+          >
+            <ReactMarkdown>{post.body}</ReactMarkdown>
           </article>
-          <div className="p-6 mt-3 text-center pt-0">
+
+          {/* Footer / Back Button */}
+          <div className="mt-16 flex justify-center border-t border-zinc-800 pt-8">
             <Link
-              to={`/blog`}
-              className="select-none rounded-lg bg-blue-500 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              to="/blog"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-blue-600 px-8 py-3 font-medium text-white shadow-md transition duration-300 ease-out hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/30"
             >
-              Back to Blogs
+              <span className="absolute inset-0 flex h-full w-full -translate-x-full items-center justify-center bg-blue-500 text-white transition-all duration-300 group-hover:translate-x-0">
+                <svg
+                  className="h-5 w-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  ></path>
+                </svg>
+              </span>
+              <span className="absolute flex h-full w-full items-center justify-center text-xs font-bold uppercase tracking-wider transition-all duration-300 group-hover:translate-x-full">
+                Back to Blogs
+              </span>
+              <span className="invisible relative">Back to Blogs</span>
             </Link>
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

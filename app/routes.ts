@@ -7,5 +7,5 @@ export default [
   route("project", "./routes/project/index.tsx"),
   route("project/:id", `./routes/project/detail.tsx`),
   route("blog", "./routes/blog/index.tsx"),
-  route("blog/:slug", "./routes/blog/detail.tsx"),
+  route("blog/:document", "./routes/blog/detail.tsx"),
 ] satisfies RouteConfig;

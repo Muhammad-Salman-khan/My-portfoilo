@@ -1,4 +1,4 @@
-import type { Datatype } from "~/types";
+import type { Datatype, StrapiProject, StrapiResponse } from "~/types";
 import type { Route } from "./+types/index";
 import { useState, type ReactNode } from "react";
 import Card from "~/components/Card";
@@ -9,10 +9,23 @@ export const loader = async ({
 }: Route.LoaderArgs): Promise<{ projects: Datatype[] }> => {
   try {
     let url = import.meta.env.VITE_API_KEY;
-    const res = await fetch(`${url}projects`);
+    const res = await fetch(`${url}projects?populate=*`);
     if (!res.ok) throw new Response(await res.text(), { status: res.status });
-    const data = await res.json();
-    return { projects: data };
+    const json: StrapiResponse<StrapiProject> = await res.json();
+    const projects = json.data.map((data: any) => ({
+      id: data.id,
+      documentId: data.documentId,
+      title: data.title,
+      image: data.image?.url ? `${data.image?.url}` : "/images/no-image.png",
+      url: data.url,
+      date: data.date,
+      category: data.category,
+      description: data.description,
+      feature: data.feature,
+    }));
+    console.log(projects);
+
+    return { projects };
   } catch (error) {
     console.error(error);
     throw error;
@@ -35,7 +48,7 @@ const index = ({ loaderData }: Route.ComponentProps) => {
   const lastIndex = currentPage * ProjectPerPage;
   const FirstIndex = (currentPage - 1) * ProjectPerPage;
   const currentProjects = filterdProjects.slice(FirstIndex, lastIndex);
-  const RenderCategories = ["All", "Fullstack", "Frontend"];
+  const RenderCategories = ["All", "Full-stack", "Front-end"];
 
   return (
     <>
@@ -62,7 +75,7 @@ const index = ({ loaderData }: Route.ComponentProps) => {
                 layout
                 key={project.id}
                 className={`    ${
-                  project.featured ? "md:col-span-2" : "col-span-1"
+                  project.feature ? "md:col-span-2" : "col-span-1"
                 }`}
               >
                 <Card project={project} />
