@@ -9,7 +9,6 @@ export const loader = async ({
 }: Route.LoaderArgs): Promise<{ posts: Post[] }> => {
   try {
     const url = import.meta.env.VITE_API_KEY;
-    const ImgUrl = import.meta.env.VITE_STRAPI_API;
     const res = await fetch(`${url}posts?populate=image`);
     if (!res.ok) throw new Error("Failed to fetched data");
     const json: StrapiResponse<StrapiPost> = await res.json();
