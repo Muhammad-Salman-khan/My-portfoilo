@@ -23,7 +23,6 @@ export const loader = async ({
       description: data.description,
       feature: data.feature,
     }));
-    console.log(projects);
 
     return { projects };
   } catch (error) {
