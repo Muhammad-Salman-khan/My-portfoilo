@@ -13,7 +13,6 @@ export const loader = async ({ request, params }: Route.LoaderArgs) => {
     ...item,
     image: item.image?.url ? `${item.image?.url}` : "/images/no-image.png",
   };
-  console.log(item);
 
   return { post };
 };
