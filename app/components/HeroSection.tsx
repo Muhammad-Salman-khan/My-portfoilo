@@ -156,7 +156,7 @@ const HeroSection = () => {
                   className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl"
                 >
                   <img
-                    src={"/public/My_profilepic.jpeg"}
+                    src={"/My_profilepic.jpeg"}
                     alt="Muhammed Salman Khan"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
