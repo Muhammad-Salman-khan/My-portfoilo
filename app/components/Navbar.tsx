@@ -91,7 +91,7 @@ const Navbar = () => {
           isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
         }
         transition={{ duration: 0.45, ease: "easeInOut" }}
-        className="lg:hidden left-0 w-full bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-t border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden"
+        className="lg:hidden left-0 w-full text-white dark:bg-slate-950 backdrop-blur-xl border-t border-gray-100 dark:border-gray-800 shadow-xl overflow-hidden"
       >
         <div className="flex flex-col items-center py-8 space-y-6">
           {navLinks.map((link, i) => (
@@ -107,8 +107,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `text-lg font-medium transition-colors duration-300 ${
                     isActive
-                      ? "text-purple-600 dark:text-purple-400"
-                      : "text-gray-700 dark:text-white hover:text-purple-600"
+                      ? " text-purple-400"
+                      : "k:text-white hover:text-purple-600"
                   }`
                 }
               >
