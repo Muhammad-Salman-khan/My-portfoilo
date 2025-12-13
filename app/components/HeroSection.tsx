@@ -79,7 +79,7 @@ const HeroSection = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  Salman Khan fv
+                  Salman Khan
                 </motion.span>
               </motion.h1>
 
