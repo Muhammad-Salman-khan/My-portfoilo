@@ -21,14 +21,14 @@ const Card = ({ project }: { project: Datatype }) => {
 
         {project.feature && (
           <div className="absolute top-4 right-4 z-20">
-            <span className="inline-flex items-center gap-1 rounded-full bg-yellow-400/90 px-3 py-1 text-xs font-bold text-black backdrop-blur-md shadow-lg">
+            <span className="inline-flex items-center gap-1 rounded-full bg-yellow-400/90 px-3 py-1 text-xs font-bold text-white backdrop-blur-md shadow-lg">
               <Star className="h-3 w-3 fill-current" /> Featured
             </span>
           </div>
         )}
 
         <div className="relative z-20 p-6 md:p-8">
-          <div className="mb-3 flex flex-wrap items-center gap-3 text-xs font-medium text-white/80">
+          <div className="mb-3 flex flex-wrap items-center gap-3 text-xs font-medium text-white">
             <span className="inline-flex items-center gap-1 rounded-full bg-blue-600/80 px-2.5 py-1 text-white backdrop-blur-sm">
               <Tag className="h-3 w-3" />
               {project.category}
@@ -41,11 +41,11 @@ const Card = ({ project }: { project: Datatype }) => {
 
           <div className="grid grid-rows-[0fr] transition-all duration-300 ease-in-out group-hover:grid-rows-[1fr]">
             <div className="overflow-hidden">
-              <div className="pt-4 flex items-center gap-2 text-sm font-semibold text-blue-300 group-hover:text-blue-200">
+              <div className="pt-4 flex items-center gap-2 text-sm font-semibold text-white">
                 <span>View my </span>
                 <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </div>
-              <span>{project.description}</span>
+              <span className="text-white">{project.description}</span>
             </div>
           </div>
         </div>

@@ -51,13 +51,13 @@ const index = ({ loaderData }: Route.ComponentProps) => {
 
   return (
     <>
-      <div className="flex justify-center items-center">
-        <h1 className="text-3xl uppercase font-extrabold text-gray-900 dark:text-white p-3 mt-4 mb-4">
+      <div className="flex  justify-center items-center">
+        <h1 className="text-3xl uppercase font-extrabold text-white bg-slate-950 p-3 mt-4 mb-4">
           Projects
         </h1>
       </div>
 
-      <div className="container mx-auto p-4">
+      <div className="container  mx-auto p-4">
         <div className="flex justify-flex align-middle items-center gap-2">
           {RenderCategories.map((e, id) => (
             <Button key={id} select={() => SelectedCategories(e)}>

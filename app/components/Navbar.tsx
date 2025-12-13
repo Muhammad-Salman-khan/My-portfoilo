@@ -19,7 +19,7 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="max-w-screen z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b-2 border-gray-600 shadow-md py-2"
+      className="max-w-screen z-50 bg-slate-950 backdrop-blur-md border-b-2 border-gray-600 shadow-md py-2"
     >
       <div className="max-w-7xl mx-auto px-6 flex justify-end items-center">
         {/* Desktop Menu */}
@@ -36,8 +36,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `relative font-medium text-sm transition-colors duration-300 ${
                     isActive
-                      ? "text-purple-600 dark:text-purple-400"
-                      : "text-gray-600 dark:text-white hover:text-purple-600 dark:hover:text-purple-400"
+                      ? "text-purple-400"
+                      : "text-white hover:text-purple-600 dark:hover:text-purple-400"
                   }`
                 }
               >

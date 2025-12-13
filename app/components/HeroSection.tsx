@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Mail, ArrowRight, Download } from "lucide-react";
 import { motion, scale } from "motion/react";
+import ProfileCard from "./ProfileCard";
 const HeroSection = () => {
   return (
     <>
@@ -107,63 +108,21 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.9 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                scale: [1, 1.02, 1],
-                rotate: [0, 4, -3, 0],
-              }}
-              whileHover={{
-                scale: 1.08,
-                rotate: 2,
-              }}
-              whileTap={{
-                scale: 0.97,
-                rotate: -1,
-              }}
-              transition={{
-                duration: 1.1,
-                ease: "easeOut",
-                rotate: {
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-                scale: {
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                },
-                // hover needs spring to feel real
-                type: "spring",
-                stiffness: 220,
-                damping: 18,
-              }}
-              className="flex-1 relative flex justify-center lg:justify-end"
-            >
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
-                {/* Spinning Gradient Ring */}
-                <div className="absolute -inset-1 bg-linear-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-full blur opacity-70 animate-pulse"></div>
-
-                {/* Image Container */}
-                <motion.div
-                  whileHover={{
-                    y: -8,
-                    boxShadow: "10px 20px 40px rgba(255,255,255,0.15)",
-                  }}
-                  className="relative w-full h-full rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl"
-                >
-                  <img
-                    src={"/My_profilepic.jpeg"}
-                    alt="Muhammed Salman Khan"
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-slate-950/50 to-transparent opacity-60"></div>
-                </motion.div>
+            <div className="flex-1 relative flex justify-center lg:justify-end">
+              <div className="flex-1 relative flex justify-center lg:justify-end items-center p-8">
+                <div />
+                <ProfileCard
+                  name="Salman khan" // Added name
+                  title="Front-end dev"
+                  handle="@Salman-Khan"
+                  status="Online"
+                  contactText="Let's Talk"
+                  avatarUrl="/public/My_profilepic-removebg.png"
+                  showUserInfo={true}
+                  enableTilt={false}
+                />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

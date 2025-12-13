@@ -55,7 +55,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
           options={{ smoothWheel: true, duration: 1 }}
         />
         <Navbar />
-        <main className="min-h-screen max-w-screen">{children}</main>
+        <main className="min-h-screen bg-slate-950 max-w-screen">
+          {children}
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>

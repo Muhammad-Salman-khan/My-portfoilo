@@ -43,8 +43,8 @@ const index = ({ loaderData }: Route.ComponentProps) => {
   });
   return (
     <>
-      <div className="bg-slate-950 rounded-md max-w-3xl mx-auto mt-10 px-6 py-6 ">
-        <h2 className="text-3xl text-white text-center uppercase font-bold mb-8">
+      <div className="max-w-3xl mx-auto  px-6 py-6 ">
+        <h2 className="text-3xl  text-white text-center uppercase font-bold mb-8">
           {" "}
           Blog
         </h2>
