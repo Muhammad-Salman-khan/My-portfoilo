@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { Mail, ArrowRight, Download } from "lucide-react";
 import { motion, scale } from "motion/react";
 import ProfileCard from "./ProfileCard";
-import TextType from "./TextType";
 const HeroSection = () => {
   return (
     <>
@@ -80,13 +79,7 @@ const HeroSection = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  <TextType
-                    text={["Salman Khan", "Full-Stack dev", "Happy coding!"]}
-                    typingSpeed={75}
-                    pauseDuration={1500}
-                    showCursor={true}
-                    cursorCharacter="|"
-                  />
+                  Salman Khan
                 </motion.span>
               </motion.h1>
 
@@ -120,7 +113,7 @@ const HeroSection = () => {
                 <div />
                 <ProfileCard
                   name="Salman khan" // Added name
-                  title="Full-stack dev"
+                  title="Front-end dev"
                   handle="@Salman-Khan"
                   status="Online"
                   contactText="Let's Talk"
