@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { Mail, ArrowRight, Download } from "lucide-react";
 import { motion, scale } from "motion/react";
 import ProfileCard from "./ProfileCard";
-import TextType from "./TextType";
 const HeroSection = () => {
   return (
     <>
@@ -80,17 +79,7 @@ const HeroSection = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  <TextType
-                    text={[
-                      "Text typing effect",
-                      "for your websites",
-                      "Happy coding!",
-                    ]}
-                    typingSpeed={75}
-                    pauseDuration={1500}
-                    showCursor={true}
-                    cursorCharacter="|"
-                  />
+                  Salman Khan
                 </motion.span>
               </motion.h1>
 
