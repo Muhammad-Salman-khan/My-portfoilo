@@ -117,7 +117,7 @@ const HeroSection = () => {
                   handle="@Salman-Khan"
                   status="Online"
                   contactText="Let's Talk"
-                  avatarUrl="/public/My_profilepic-removebg.png"
+                  avatarUrl="My_profilepic-removebg.png"
                   showUserInfo={true}
                   enableTilt={false}
                 />
