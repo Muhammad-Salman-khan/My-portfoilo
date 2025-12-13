@@ -121,7 +121,7 @@ const HeroSection = () => {
                 <ProfileCard
                   name="Salman khan" // Added name
                   title="Full-stack dev"
-                  handle="Salman-Khan"
+                  handle="@Salman-Khan"
                   status="Online"
                   contactText="Let's Talk"
                   avatarUrl="My_profilepic-removebg.png"
